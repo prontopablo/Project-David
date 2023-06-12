@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Unity.Netcode;
+using UnityEngine;
 
 namespace Invector.vCharacterController
 {
-    public class vThirdPersonInput : MonoBehaviour
+    public class vThirdPersonInput : NetworkBehaviour
     {
         #region Variables       
 
@@ -25,6 +28,7 @@ namespace Invector.vCharacterController
 
         protected virtual void Start()
         {
+            if(!IsOwner) this.enabled = false;
             InitilizeController();
             InitializeTpCamera();
         }

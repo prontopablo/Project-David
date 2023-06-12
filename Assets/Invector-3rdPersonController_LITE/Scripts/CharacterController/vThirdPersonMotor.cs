@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Unity.Netcode;
+using UnityEngine;
 
 namespace Invector.vCharacterController
 {
-    public class vThirdPersonMotor : MonoBehaviour
+    public class vThirdPersonMotor : NetworkBehaviour
     {
         #region Inspector Variables
 
@@ -107,6 +110,7 @@ namespace Invector.vCharacterController
 
         public void Init()
         {
+            if(!IsOwner) this.enabled = false;
             animator = GetComponent<Animator>();
             animator.updateMode = AnimatorUpdateMode.AnimatePhysics;
 

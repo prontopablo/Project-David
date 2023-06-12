@@ -1,7 +1,10 @@
-﻿using Invector;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Unity.Netcode;
+using Invector;
 using UnityEngine;
 
-public class vThirdPersonCamera : MonoBehaviour
+public class vThirdPersonCamera : NetworkBehaviour
 {
     #region inspector properties    
 
@@ -65,6 +68,7 @@ public class vThirdPersonCamera : MonoBehaviour
 
     public void Init()
     {
+        if(!IsOwner) this.enabled = false;
         if (target == null)
             return;
 
