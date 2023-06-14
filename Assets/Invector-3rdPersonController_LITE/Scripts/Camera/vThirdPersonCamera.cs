@@ -4,10 +4,10 @@ using Unity.Netcode;
 using Invector;
 using UnityEngine;
 
-public class vThirdPersonCamera : NetworkBehaviour
+public class vThirdPersonCamera : MonoBehaviour
 {
-    #region inspector properties    
-
+    #region inspector properties 
+       
     public Transform target;
     [Tooltip("Lerp speed between Camera States")]
     public float smoothCameraRotation = 12f;
@@ -68,7 +68,6 @@ public class vThirdPersonCamera : NetworkBehaviour
 
     public void Init()
     {
-        if(!IsOwner) this.enabled = false;
         if (target == null)
             return;
 
