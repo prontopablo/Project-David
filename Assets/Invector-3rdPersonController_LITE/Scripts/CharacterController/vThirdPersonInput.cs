@@ -29,6 +29,7 @@ namespace Invector.vCharacterController
         protected virtual void Start()
         {
             if(!IsOwner) this.enabled = false;
+
             InitilizeController();
             InitializeTpCamera();
         }
@@ -68,10 +69,13 @@ namespace Invector.vCharacterController
                 tpCamera = FindObjectOfType<vThirdPersonCamera>();
                 if (tpCamera == null)
                     return;
-                if (tpCamera)
+                if(IsOwner)
                 {
-                    tpCamera.SetMainTarget(this.transform);
-                    tpCamera.Init();
+                    if (tpCamera)
+                    {
+                        tpCamera.SetMainTarget(this.transform);
+                        tpCamera.Init();
+                    }
                 }
             }
         }
